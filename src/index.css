@@ -1,0 +1,442 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Flawless Med Spa Design System
+   Luxury feminine aesthetic with glossy, oily feel
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Pure white canvas with a whisper of violet */
+    --background: 270 30% 99%;
+    --foreground: 272 45% 12%;
+
+    /* Cards: crisp white */
+    --card: 0 0% 100%;
+    --card-foreground: 272 45% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 272 45% 12%;
+
+    /* Primary: deep royal purple */
+    --primary: 272 55% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: darkest aubergine purple */
+    --secondary: 274 60% 17%;
+    --secondary-foreground: 45 60% 92%;
+
+    /* Muted: soft lilac greys */
+    --muted: 270 25% 95%;
+    --muted-foreground: 272 15% 42%;
+
+    /* Accent: rich gold */
+    --accent: 43 72% 48%;
+    --accent-foreground: 274 60% 15%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 272 20% 89%;
+    --input: 272 20% 89%;
+    --ring: 43 72% 48%;
+
+    --radius: 0.25rem;
+
+    /* Brand palette - Deep Purple / Rich Gold / White */
+    --spa-cream: 270 30% 99%;
+    --spa-taupe: 272 18% 55%;
+    --spa-rose: 290 30% 60%;
+    --spa-chocolate: 274 60% 17%;
+    --spa-gold: 43 74% 50%;
+    --spa-beige: 270 22% 93%;
+    --spa-terracotta: 272 55% 30%;
+    --spa-bronze: 40 55% 55%;
+    --spa-earth: 274 45% 25%;
+
+    /* Glossy effect colors */
+    --glossy-highlight: 0 0% 100%;
+    --glossy-shimmer: 45 80% 66%;
+    --glossy-pearl: 272 30% 97%;
+  }
+
+  .dark {
+    /* Deep purple night */
+    --background: 274 45% 7%;
+    --foreground: 270 25% 94%;
+
+    --card: 274 40% 11%;
+    --card-foreground: 270 25% 93%;
+
+    --popover: 274 40% 13%;
+    --popover-foreground: 270 25% 93%;
+
+    /* Gold leads in dark mode */
+    --primary: 43 78% 56%;
+    --primary-foreground: 274 55% 10%;
+
+    /* Luminous purple secondary */
+    --secondary: 272 45% 40%;
+    --secondary-foreground: 45 60% 94%;
+
+    --muted: 274 30% 16%;
+    --muted-foreground: 270 18% 68%;
+
+    --accent: 43 70% 58%;
+    --accent-foreground: 274 55% 10%;
+
+    --destructive: 0 62% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 274 25% 22%;
+    --input: 274 25% 22%;
+    --ring: 43 78% 56%;
+
+    /* Glossy effects for dark mode */
+    --glossy-highlight: 270 30% 96%;
+    --glossy-shimmer: 45 75% 62%;
+    --glossy-pearl: 274 30% 18%;
+
+    /* Brand palette adapted for dark mode */
+    --spa-cream: 274 35% 14%;
+    --spa-taupe: 272 20% 55%;
+    --spa-rose: 290 30% 58%;
+    --spa-chocolate: 274 45% 26%;
+    --spa-gold: 43 80% 58%;
+    --spa-beige: 274 25% 22%;
+    --spa-terracotta: 272 45% 48%;
+    --spa-bronze: 40 55% 58%;
+    --spa-earth: 274 40% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    @apply font-normal tracking-wide;
+  }
+}
+
+@layer components {
+  /* Elegant subheading style */
+  .subheading {
+    @apply text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Luxury button style - Glossy wet look */
+  .btn-luxury {
+    @apply relative bg-secondary text-white px-8 py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500 overflow-hidden inline-flex items-center justify-center text-center;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--secondary)) 0%,
+      hsl(272 50% 26%) 50%,
+      hsl(var(--secondary)) 100%
+    );
+    box-shadow: 
+      0 4px 15px -3px hsl(var(--secondary) / 0.4),
+      inset 0 1px 0 hsl(var(--glossy-highlight) / 0.15),
+      inset 0 -1px 0 hsl(0 0% 0% / 0.2);
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glossy-highlight) / 0.2) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+  }
+
+  .btn-luxury:hover::before {
+    left: 100%;
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 
+      0 6px 20px -3px hsl(var(--secondary) / 0.5),
+      inset 0 1px 0 hsl(var(--glossy-highlight) / 0.25),
+      inset 0 -1px 0 hsl(0 0% 0% / 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Gold accent text */
+  .text-gold {
+    color: hsl(var(--spa-gold));
+  }
+
+  /* Overlay for hero images - Oily iridescent effect */
+  .hero-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      160deg,
+      hsl(0 0% 0% / 0.3) 0%,
+      hsl(274 55% 18% / 0.3) 30%,
+      hsl(43 70% 55% / 0.12) 50%,
+      hsl(272 45% 25% / 0.35) 70%,
+      hsl(0 0% 0% / 0.5) 100%
+    );
+  }
+
+  /* Elegant divider - glossy */
+  .divider-elegant {
+    @apply w-16 h-px mx-auto my-6;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary)) 20%,
+      hsl(var(--glossy-shimmer)) 50%,
+      hsl(var(--primary)) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Glossy glass card */
+  .glass-card {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--glossy-pearl)) 50%,
+      hsl(var(--card)) 100%
+    );
+    box-shadow: 
+      0 8px 32px -8px hsl(var(--secondary) / 0.15),
+      inset 0 1px 0 hsl(var(--glossy-highlight) / 0.5),
+      inset 0 -1px 0 hsl(var(--secondary) / 0.05);
+    backdrop-filter: blur(10px);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--glossy-highlight) / 0.1) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Oily sheen animation overlay */
+  .oily-sheen {
+    @apply relative overflow-hidden;
+  }
+
+  .oily-sheen::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      hsl(var(--glossy-highlight) / 0.05) 45%,
+      hsl(var(--glossy-shimmer) / 0.1) 50%,
+      hsl(var(--glossy-highlight) / 0.05) 55%,
+      transparent 60%
+    );
+    animation: sheenMove 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Glossy surface for sections */
+  .glossy-surface {
+    @apply relative;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--glossy-pearl)) 50%,
+      hsl(var(--background)) 100%
+    );
+  }
+
+  .glossy-surface::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glossy-highlight) / 0.6) 50%,
+      transparent 100%
+    );
+  }
+
+  /* Glossy image frame */
+  .glossy-frame {
+    @apply relative;
+    box-shadow: 
+      0 20px 40px -15px hsl(var(--secondary) / 0.25),
+      inset 0 0 0 1px hsl(var(--glossy-highlight) / 0.2);
+  }
+
+  .glossy-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--glossy-highlight) / 0.15) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Wet/oily text effect */
+  .glossy-text {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground)) 45%,
+      hsl(var(--glossy-shimmer)) 50%,
+      hsl(var(--foreground)) 55%,
+      hsl(var(--foreground)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Pearl border effect */
+  .pearl-border {
+    border: 1px solid hsl(var(--border));
+    box-shadow: 
+      inset 0 1px 0 hsl(var(--glossy-highlight) / 0.4),
+      0 4px 12px -4px hsl(var(--secondary) / 0.1);
+  }
+
+  /* Stats section glossy */
+  .glossy-dark {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--secondary)) 0%,
+      hsl(274 55% 14%) 50%,
+      hsl(var(--secondary)) 100%
+    );
+  }
+
+  .glossy-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--glossy-highlight) / 0.08) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Icon container glossy */
+  .glossy-icon {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--primary) / 0.15) 0%,
+      hsl(var(--primary) / 0.1) 100%
+    );
+    box-shadow: 
+      inset 0 1px 0 hsl(var(--glossy-highlight) / 0.3),
+      inset 0 -1px 0 hsl(var(--secondary) / 0.1);
+  }
+}
+
+@layer utilities {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Sheen movement animation */
+  @keyframes sheenMove {
+    0%, 100% {
+      transform: translateX(-30%) translateY(-30%) rotate(45deg);
+    }
+    50% {
+      transform: translateX(30%) translateY(30%) rotate(45deg);
+    }
+  }
+
+  /* Shimmer animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+  }
+}
